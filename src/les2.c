@@ -1,66 +1,58 @@
 #include <stdio.h>
 
 
-int issimple(long long n){
+int issimple(long int n){ // проверка на простоту подаваемого числа (результат "1" - простое, "0" - натуральное, "-1" - целое)
 	
-	
-	if(n > 0){
-		int j = 0; // ��������� ��������
-		long long i = 0;
-		int t; // 1 - �������, 0 - �����������
-		if (n > 3){
+	if(n > 0){ // простые числа не имеют знака
+		
+		switch(n%10){
 			
-			if( n % 2 != 0){
+			case 1:
+			case 3:
+			case 7:
+			case 9:{
 				
-				for (i = 3; i*i < n; i+= 2) {
+				int j = 0; // инкримент итерации
+				for ( long int i = 3 ; i < n/i ; i = i + 2) { // то можно с шагом 2 идти до корня из n 
 					
-					if (n % i == 0) {
-						t = 0;
-						break;
+					// printf("\n%d || %d | %d | %d | %d\n", j, n, i, n/i, n%i); // 
+					
+					if (n%i == 0) { // в поисках числа на которое делится число n
+						// printf("Number of iterations = %i; NOD = %d | %d\n", j, i, n%i);
+						return 0; // если число найдено то выходим из цикла и функции со значением 0
 					}	 
-					j++;
+					
+					j++; // счетчик вхождения в цикл
 				}
 				
-				
-				if( i*i > n ){
-					t = 1;
-				} else t = 0;
-				
-				
-			} else t = 0;
+				return 1;
+			}
+			default:
 			
-			
-		} else if (n > 0){
-			t = 1;
-		}	
-		
-		printf("Number of iterations = %i; NOD = %d\n", &j, &i);
-		if (t){
-			return 1;
-		} else{
-			return 0;
+				if ( ( n == 2 ) || ( n == 5 ) ) return 1;
+				else return 0;
+				
 		}
 		
-		
 	} else{
-		printf("number < 0\n");
-		return 0;
+		return -1;
 	}
-	printf("\n");
 	
-	return 1;
+	return 0;
 }
 
 
 int main () {
 	
-	long long n;
 	printf("Input number = ");
-	scanf("%d",&n);
-	printf("\n");
+	fflush(stdout);
+	long int n;
+	scanf("%ld",&n);
 	
-	if (issimple(n)) printf("Simple\n");
-	else printf("Natural\n");
+	// printf("\n%d\n", 3%10);
+	
+	if (issimple(n)>0) {printf("Simple\n");}
+	else printf("Integer\n");
 	
 	return 0;
 }
