@@ -7,13 +7,13 @@
 // #include "../sourse/arrays.h"
 //---------------------------------------------------------------
 
-void fillrandarr (int *arr, int len, int bord){ 	// Заполнение массива псевдослучайными числами 
+void fillrandarr (int *arr, int len, int bord){ 	// Р—Р°РїРѕР»РЅРµРЅРёРµ РјР°СЃСЃРёРІР° РїСЃРµРІРґРѕСЃР»СѓС‡Р°Р№РЅС‹РјРё С‡РёСЃР»Р°РјРё 
 	for (int i = 0; i < len ; i++){
 		*(arr + i) = rand() % bord;
 	}
 }
 	
-void printarr (int *arr, int len){ 					// вывод линейного массива
+void printarr (int *arr, int len){ 					// РІС‹РІРѕРґ Р»РёРЅРµР№РЅРѕРіРѕ РјР°СЃСЃРёРІР°
 	
 	for ( int i = 0; i < len; i++){
 		printf(" %2d", *(arr + i));
@@ -22,7 +22,7 @@ void printarr (int *arr, int len){ 					// вывод линейного массива
 	
 }
 
-void swap (int* n, int* m){							// Меняет местами 2 целочисленных переменных
+void swap (int* n, int* m){							// РњРµРЅСЏРµС‚ РјРµСЃС‚Р°РјРё 2 С†РµР»РѕС‡РёСЃР»РµРЅРЅС‹С… РїРµСЂРµРјРµРЅРЅС‹С…
 	int temp = *m;
 	*m = *n;
 	*n = temp;
@@ -34,7 +34,7 @@ void swap (int* n, int* m){							// Меняет местами 2 целочисленных переменных
 
 //---------------------------------------------------------------
 
-void sortinsert (int *arr, int len){				// Сортировка методом вставки
+void sortinsert (int *arr, int len){				// РЎРѕСЂС‚РёСЂРѕРІРєР° РјРµС‚РѕРґРѕРј РІСЃС‚Р°РІРєРё
 	
 	int temp, pos;
 	
@@ -50,7 +50,7 @@ void sortinsert (int *arr, int len){				// Сортировка методом вставки
 	
 }
 
-void sortquickH (int *arr, int first, int last){	// Быстрая сортировка с разбиением Хоара
+void sortquickH (int *arr, int first, int last){	// Р‘С‹СЃС‚СЂР°СЏ СЃРѕСЂС‚РёСЂРѕРІРєР° СЃ СЂР°Р·Р±РёРµРЅРёРµРј РҐРѕР°СЂР°
 	int i = first;
 	int j = last;
 	
@@ -74,7 +74,7 @@ void sortquickH (int *arr, int first, int last){	// Быстрая сортировка с разбиен
 	
 }
 
-void sortupdquick (int *arr, int first, int last){ 	// Улучшенная быстрая сортировка
+void sortupdquick (int *arr, int first, int last){ 	// РЈР»СѓС‡С€РµРЅРЅР°СЏ Р±С‹СЃС‚СЂР°СЏ СЃРѕСЂС‚РёСЂРѕРІРєР°
 	
 	if (last-first <= 10){
 		sortinsert(arr+first, last-first+1);
@@ -93,12 +93,12 @@ void sortupdquick (int *arr, int first, int last){ 	// Улучшенная быстрая сортир
 
 //---------------------------------------------------------------
 
-void sortblocks (int *arr, int len){				// Блочная сортировка
+void sortblocks (int *arr, int len){				// Р‘Р»РѕС‡РЅР°СЏ СЃРѕСЂС‚РёСЂРѕРІРєР°
 	const int max = len;
 	const int b = 10;
 	
 	int buckets[b][max+1];
-	for (int i = 0; i < b; ++i){					//обнуление счетчиков заполнения
+	for (int i = 0; i < b; ++i){					//РѕР±РЅСѓР»РµРЅРёРµ СЃС‡РµС‚С‡РёРєРѕРІ Р·Р°РїРѕР»РЅРµРЅРёСЏ
 		buckets[i][max] = 0;		
 	}
 	
