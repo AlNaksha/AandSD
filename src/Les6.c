@@ -7,8 +7,6 @@
 
 //---------------------------------------------------------------
 //	1) Пузырьковая сортировка одномерного числового массива
-//	длинна массива (len<0) - сортировка по убыванию, (len>0) - по возрастанию
-//	реализую сразу 
 
 void swap(int *a, int *b){ 				// меняет местами два числа
 	
@@ -27,6 +25,18 @@ void printarr(int *arr, int len){ 		// вывод линейного масси�
 	
 }
 
+void printarr2(int *arr, int n, int m){ 		// вывод двумерного массива
+	
+	for (int j = 0; j < n; j++){
+		for ( int i = 0; i < m; i++){
+			printf(" %3d", *(arr+j*m+i));
+		}
+		printf("\n");
+	}
+	printf("\n");
+
+}
+
 int BubbleSort(int *arr, int len){ 		// Пузырьковая сортировка
 	
 	for (int j = 0; j < len; j++){
@@ -38,6 +48,22 @@ int BubbleSort(int *arr, int len){ 		// Пузырьковая сортиров�
 		}
 	}
 	
+	return 0;
+}
+
+int BubbleSortdb(int *arr, int n, int m){ 		// Пузырьковая сортировка двумерного массива
+	
+	int len = n*m;
+	
+	for (int j = 0; j < len; j++){
+
+		for (int i = 0; i < len-1; i++){
+			
+			if ( *(arr + i) > *(arr+i+1) )
+				swap( &*(arr+i), &*(arr+i+1) );
+		}
+	}
+
 	return 0;
 }
 
@@ -89,14 +115,28 @@ void TPK(){ 							// TPK- алгоритм
 
 int main(int args, const char** argv){
 	
-	int Array[] = {3,11,4,1,2,4,5,21,8,6,46,24,246,2};
-	int len = sizeof(Array)/sizeof(int);
+	// int Array[] = {3,11,4,1,2,4,5,21,8,6,46,24,246,2};
+	// int len = sizeof(Array)/sizeof(int);
 	
-	printarr(Array, len);
+	// printarr(Array, len);
 	
-	BubbleSort(Array, len);
+	// BubbleSort(Array, len);
 	
-	printarr(Array, len);
+	// printarr(Array, len);
+	
+	int Array[4][4] = {
+		{3,11,4,1},
+		{2,4,5,21},
+		{8,6,46,24},
+		{246,2,4,7}
+	};
+	
+	int n = sizeof(Array)/sizeof(*Array); // Число столбцов
+	int m = sizeof(*Array)/sizeof(int);
+	
+	printarr2(*Array, n, m);
+	BubbleSortdb(*Array, n, m);
+	printarr2(*Array, n, m);
 	
 	TPK();
 	
